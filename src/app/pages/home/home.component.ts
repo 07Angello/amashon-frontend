@@ -1,3 +1,4 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/products/product.service';
 import { Product } from 'src/app/shared/models/product';
@@ -10,11 +11,16 @@ import { Product } from 'src/app/shared/models/product';
 export class HomeComponent implements OnInit {
   message: string;
   products: Product;
+  placeHolder: string;
+  search: string;
+
 
   constructor(
     private productService: ProductService
   ) {
     this.message = '';
+    this.placeHolder = 'Search product...';
+    this.search = '';
   }
 
   ngOnInit(): void {
@@ -31,6 +37,20 @@ export class HomeComponent implements OnInit {
 
         this.products = response.Data;
       });
+  }
+
+  updateFilterChange(event): void {
+    console.log(this.search);
+  }
+
+  updateFilter(event): void {
+
+      console.log(this.search);
+
+  }
+
+  searching(): void {
+    console.log(this.search);
   }
 
 }

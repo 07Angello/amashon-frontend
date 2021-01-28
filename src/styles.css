@@ -14,4 +14,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     right: 0;
   }
 
-
+  html, body {margin: 0; height: 100%; overflow: hidden}

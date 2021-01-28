@@ -1,9 +1,16 @@
-<div class="product-main">
-    <mat-card class="product-container">   
+<div class="product-main" fxLayout="column" >
+    <mat-card class="product-container">
         <mat-card-content fxLayout="row wrap">
+            <mat-form-field fxLayoutAlign="end center" style="width: 100%;">
+                <input style="width: 200px;" matInput name="searchControl" type='text' class="form-control" [(placeholder)]='placeHolder' (change)="updateFilterChange($event)" (keyup)='updateFilter($event)'
+                [(ngModel)]="search"/>
+                <mat-icon matTooltip="Search" data-toggle="tooltip" matTooltipPosition="above" (click)='searching()' class="searchButton"
+                  matSuffix>search</mat-icon>
+            </mat-form-field>
             <div *ngFor="let product of products" fxLayoutAlign="center center" fxFlex.gt-lg="33.33" fxFlex.gt-md="33.33" fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100">
                 <app-product-card [product]="product"></app-product-card>
             </div>
         </mat-card-content>
     </mat-card>
 </div>
+<br>

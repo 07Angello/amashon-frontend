@@ -1,7 +1,50 @@
 <div class="product-main">
     <mat-card class="product-container">   
-        <mat-card-content fxLayout="row wrap">
-            
+        <mat-card-content>
+            <div class="card">
+            <div class="card__title">
+                <div class="icon">
+                <a href="#"><i class="fa fa-arrow-left"></i></a>
+                </div>
+                <h3>Information</h3>
+            </div>
+            <div class="card__body">
+                <div class="half">
+                <div class="featured_text">
+                    <h1>{{ product.descriptionEN }}</h1>
+                    <p class="sub">{{ product.brand }}</p>
+                    <p class="price">$210.00</p>
+                </div>
+                <div class="image">
+                    <img [src]="product.image" alt="">
+                </div>
+                </div>
+                <div class="half">
+                <div class="description">
+                    <p>{{ product.longDescriptionEN }}</p>
+                </div>
+                <span class="stock"><i class="fa fa-pen"></i> In stock</span>
+                <div class="reviews">
+                    <ul class="stars">
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star"></i></li>
+                    <li><i class="fa fa-star-o"></i></li>
+                    </ul>
+                </div>
+                </div>
+            </div>
+            <div class="card__footer">
+                <div class="recommend">
+                <p>Recommended by</p>
+                <h3>Angello Gamez</h3>
+                </div>
+                <div class="action">
+
+                </div>
+            </div>
+            </div>
         </mat-card-content>
     </mat-card>
 </div>

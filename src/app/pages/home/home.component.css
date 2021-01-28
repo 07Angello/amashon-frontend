@@ -20,10 +20,11 @@
     justify-content: center;
     height: 100%;
     width: 100%;
+    position: relative;
 }
 
 .product-container {
-    margin-top: 425px;
-    margin-bottom: 50px;
     width: 95%;
+    margin: 15px;
+    margin-bottom: 64px;
 }
