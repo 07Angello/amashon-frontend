@@ -7,4 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'amashon-frontend';
+  isOpen: boolean;
+
+  constructor() {
+    this.isOpen = false;
+  }
+
+  toggleMenu() {
+    this.isOpen = !this.isOpen;
+  }
 }
