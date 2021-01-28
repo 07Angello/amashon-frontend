@@ -3,7 +3,7 @@
     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="toggleMenu()">
       <mat-icon>menu</mat-icon>
     </button>
-    <span><img style="cursor: pointer;" src="../../../assets/img/amashon-logo.png"></span>
+    <span><img class="logo" src="../../../assets/img/amashon-logo.png"></span>
     <span class="example-spacer"></span>
     <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>favorite</mat-icon>
@@ -11,14 +11,15 @@
 </mat-toolbar>
 
 <!--======= Sidebar menu =======-->
-<ng-sidebar-container>
+<ng-sidebar-container style="width: 100%; height: calc(100% - 64px);">
     <ng-sidebar [opened]="isOpen">
         <p>Options</p>
         <button (click)="toggleMenu()">
             cerrar
         </button>
     </ng-sidebar>
-    <div ng-sidebar-content>
+    <div ng-sidebar-content style="width: 100% !important; height: 100%;">
+        <!--======= Router oulet =======-->
         <router-outlet></router-outlet>
     </div>
 </ng-sidebar-container>
