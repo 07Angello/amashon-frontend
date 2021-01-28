@@ -1,0 +1,25 @@
+<div class="el-wrapper">
+    <div class="box-up">
+        <img class="img" [src]="product.image" alt="">
+        <div class="img-info">
+        <div class="info-inner">
+            <span class="p-name">{{ product.descriptionEN }}</span>
+            <span class="p-company">{{ product.brand }}</span>
+        </div>
+        <div class="a-size">Available Product</div>
+        </div>
+    </div>
+
+    <div class="box-down" (click)="productDetail(product._id)">
+        <div class="h-bg">
+        <div class="h-bg-inner"></div>
+        </div>
+
+        <a class="cart">
+        <span class="price">$120</span>
+        <span class="add-to-cart">
+            <span class="txt">View Product</span>
+        </span>
+        </a>
+    </div>
+</div>

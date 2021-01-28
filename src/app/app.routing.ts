@@ -6,7 +6,7 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
 
 export const AppRoutes: Routes = [
     { path: 'home', component:  HomeComponent},
-    { path: 'detail', component:  ProductDetailComponent },
+    { path: 'detail/:id', component:  ProductDetailComponent },
     { path: '', redirectTo: '/home', pathMatch: 'full' },
     { path: '**', component: NotFoundComponent }
 ];

@@ -16,6 +16,9 @@ import { HomeComponent } from './pages/home/home.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ProductDetailComponent } from './pages/product-detail/product-detail.component';
 import { ControlsModule } from './controls/controls.module';
+import { ServicesModule } from './services/services.module';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -25,7 +28,9 @@ import { ControlsModule } from './controls/controls.module';
     FormsModule,
     RouterModule.forRoot(AppRoutes),
     SidebarModule,
-    ControlsModule
+    ControlsModule,
+    HttpClientModule,
+    ServicesModule
   ],
   declarations: [
     AppComponent,

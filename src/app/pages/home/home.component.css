@@ -1,3 +1,19 @@
+/* MOBILE and down */
+@media only screen and (max-width:480px) {
+    .product-container {
+        margin-top: 980px;
+        width: 95%;
+    }
+  }
+
+  /* TABLET and up */
+  @media only screen and (min-width: 768px) {
+    .logo {
+        height: auto;
+        width: 300px !important;
+    }
+  }
+
 .product-main {
     display: flex;
     align-items: center;
@@ -7,6 +23,7 @@
 }
 
 .product-container {
-    height: calc(100% - 64px);
+    margin-top: 425px;
+    margin-bottom: 50px;
     width: 95%;
 }

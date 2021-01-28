@@ -1,13 +1,9 @@
 <div class="product-main">
-    <mat-card class="product-container">
-        <mat-card-header>
-          <mat-card-title>Products</mat-card-title>
-        </mat-card-header>
-    
-        <mat-card-content>
-          <p>
-            Content
-          </p>
+    <mat-card class="product-container">   
+        <mat-card-content fxLayout="row wrap">
+            <div *ngFor="let product of products" fxLayoutAlign="center center" fxFlex.gt-lg="33.33" fxFlex.gt-md="33.33" fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100">
+                <app-product-card [product]="product"></app-product-card>
+            </div>
         </mat-card-content>
     </mat-card>
 </div>

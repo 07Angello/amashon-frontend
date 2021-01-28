@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +10,17 @@ export class AppComponent {
   title = 'amashon-frontend';
   isOpen: boolean;
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     this.isOpen = false;
   }
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
+  }
+
+  goHome(): void {
+    this.router.navigate(['/home']);
   }
 }

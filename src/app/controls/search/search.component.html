@@ -1,0 +1,6 @@
+<mat-form-field>
+    <input matInput name="searchControl" type='text' class="form-control" [(placeholder)]='placeHolder' (change)="updateFilterChange($event)" (keyup)='updateFilter($event)'
+       />
+    <mat-icon matTooltip="Search" data-toggle="tooltip" matTooltipPosition="above" (click)='searching()' class="searchButton"
+      matSuffix>search</mat-icon>
+  </mat-form-field>
