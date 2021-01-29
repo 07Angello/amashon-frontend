@@ -1,6 +1,15 @@
 <div class="product-main" fxLayout="column" >
     <mat-card class="product-container">
-        <div fxLayout="row" fxLayoutAlign="end center">
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <button mat-button [matMenuTriggerFor]="menu">Countries</button>
+            <mat-menu #menu="matMenu">
+                <button *ngFor="let country of countries" mat-menu-item (click)="filterByCountry(country.descriptionEN)">
+                    <span>{{ country.descriptionEN }}</span>
+                </button>
+                <button mat-menu-item (click)="filterByCountry('ALL')">
+                    <span>ALL</span>
+                </button>
+            </mat-menu>
             <mat-form-field>
                 <input matInput name="searchControl" type='text' class="form-control" [(placeholder)]='placeHolder' (change)="updateFilterChange($event)" (keyup)='updateFilter($event)'
                 [(ngModel)]="search"/>

@@ -4,6 +4,8 @@ import { ProductService } from 'src/app/services/products/product.service';
 import { Product } from 'src/app/shared/models/product';
 import { Category } from 'src/app/shared/models/category';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
+import { Country } from 'src/app/shared/models/country';
+import { CountryService } from 'src/app/services/countries/country.service';
 
 @Component({
   selector: 'app-home',
@@ -15,24 +17,29 @@ export class HomeComponent implements OnInit {
   products: Product[];
   placeHolder: string;
   search: string;
+  country: string;
   categories: Category[];
+  countries: Country[];
 
   constructor(
     private productService: ProductService,
-    private categoryService: CategoriesService
+    private categoryService: CategoriesService,
+    private countryService: CountryService
   ) {
     this.message = '';
     this.placeHolder = 'Search product...';
     this.search = '';
+    this.country = 'ALL';
   }
 
   ngOnInit(): void {
-    this.getProducts('ALL');
+    this.getProducts('ALL', 'ALL');
     this.getCategories('ALL');
+    this.getCountries();
   }
 
-  getProducts(filter: string): void {
-    this.productService.getProducts(filter)
+  getProducts(filter: string, country: string): void {
+    this.productService.getProducts(filter, country)
       .subscribe((response: any) => {
         console.log(response.Data);
         if (response.Message && response.Message.length > 0) {
@@ -55,15 +62,32 @@ export class HomeComponent implements OnInit {
   }
 
   updateFilterChange(event): void {
-    this.getProducts(this.search);
+    this.getProducts(this.search, this.country);
   }
 
   updateFilter(event): void {
-    this.getProducts(this.search);
+    this.getProducts(this.search, this.country);
   }
 
   searching(): void {
-    this.getProducts(this.search);
+    this.getProducts(this.search, this.country);
+  }
+
+  getCountries(): void {
+    this.countryService.getCountries()
+      .subscribe((response: any) => {
+        console.log(response);
+        if (response.Message && response.Message.length > 0) {
+          console.log(response.Message);
+        }
+
+        this.countries = response.Data;
+      });
+  }
+
+  filterByCountry(country: string): void {
+    this.country = country;
+    this.getProducts(this.search, this.country);
   }
 
 }
