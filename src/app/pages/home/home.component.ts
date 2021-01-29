@@ -6,6 +6,7 @@ import { Category } from 'src/app/shared/models/category';
 import { CategoriesService } from 'src/app/services/categories/categories.service';
 import { Country } from 'src/app/shared/models/country';
 import { CountryService } from 'src/app/services/countries/country.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -25,7 +26,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private productService: ProductService,
     private categoryService: CategoriesService,
-    private countryService: CountryService
+    private countryService: CountryService,
+    private toastr: ToastrService
   ) {
     this.message = '';
     this.placeHolder = 'Search product...';
@@ -43,10 +45,9 @@ export class HomeComponent implements OnInit {
   getProducts(filter: string, country: string, category: string): void {
     this.productService.getProducts(filter, country, category)
       .subscribe((response: any) => {
-        console.log(response);
+
         if (response.Message && response.Message.length > 0) {
-          //alert(response.Message);
-         // this.getProducts('ALL', 'ALL', 'ALL');
+          this.toastr.warning(response.Message, 'Amasohn');
           return;
         }
 
@@ -80,7 +81,6 @@ export class HomeComponent implements OnInit {
   getCountries(): void {
     this.countryService.getCountries()
       .subscribe((response: any) => {
-        console.log(response);
         if (response.Message && response.Message.length > 0) {
           console.log(response.Message);
         }
@@ -96,7 +96,6 @@ export class HomeComponent implements OnInit {
 
   filterByCategory(category: string): void {
     this.category = category;
-    console.log(this.category);
     this.getProducts(this.search, this.country, this.category);
   }
 

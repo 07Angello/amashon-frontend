@@ -8,7 +8,8 @@ import { AppRoutes } from './app.routing';
 import { SidebarModule } from 'ng-sidebar';
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
+
 import { MaterialModule } from './material-module';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
@@ -18,11 +19,16 @@ import { ProductDetailComponent } from './pages/product-detail/product-detail.co
 import { ControlsModule } from './controls/controls.module';
 import { ServicesModule } from './services/services.module';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { ToastrModule } from 'ngx-toastr';
+
+
 
 @NgModule({
   imports: [
     BrowserModule,
-    BrowserAnimationsModule,
+    CommonModule,
     MaterialModule,
     FlexLayoutModule,
     FormsModule,
@@ -30,7 +36,12 @@ import { HttpClientModule } from '@angular/common/http';
     SidebarModule,
     ControlsModule,
     HttpClientModule,
-    ServicesModule
+    ServicesModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: 'toast-top-right'
+    }),
   ],
   declarations: [
     AppComponent,
