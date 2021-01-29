@@ -14,10 +14,10 @@ export class ProductService {
     this.url = environment.URL_Amashon_RestApi + 'products';
   }
 
-  getProducts(searchedProduct: string, searchedCountry: string) {
+  getProducts(searchedProduct: string, searchedCountry: string, searchedCategory: string) {
     searchedProduct = searchedProduct.length === 0 || searchedProduct === null ? 'ALL' : searchedProduct;
     searchedCountry = searchedCountry.length === 0 || searchedCountry === null ? 'ALL' : searchedCountry;
-    const url = `${this.url}/filtered/${searchedProduct}/${searchedCountry}`;
+    const url = `${this.url}/filtered/${searchedProduct}/${searchedCountry}/${searchedCategory}`;
     return this.http.get(url);
   }
 

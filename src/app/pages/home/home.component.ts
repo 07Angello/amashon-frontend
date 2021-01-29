@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
   placeHolder: string;
   search: string;
   country: string;
+  category: string;
   categories: Category[];
   countries: Country[];
 
@@ -30,20 +31,23 @@ export class HomeComponent implements OnInit {
     this.placeHolder = 'Search product...';
     this.search = '';
     this.country = 'ALL';
+    this.category = 'ALL';
   }
 
   ngOnInit(): void {
-    this.getProducts('ALL', 'ALL');
+    this.getProducts('ALL', 'ALL', 'ALL');
     this.getCategories('ALL');
     this.getCountries();
   }
 
-  getProducts(filter: string, country: string): void {
-    this.productService.getProducts(filter, country)
+  getProducts(filter: string, country: string, category: string): void {
+    this.productService.getProducts(filter, country, category)
       .subscribe((response: any) => {
-        console.log(response.Data);
+        console.log(response);
         if (response.Message && response.Message.length > 0) {
-          console.log(response.Message);
+          //alert(response.Message);
+         // this.getProducts('ALL', 'ALL', 'ALL');
+          return;
         }
 
         this.products = response.Data;
@@ -62,15 +66,15 @@ export class HomeComponent implements OnInit {
   }
 
   updateFilterChange(event): void {
-    this.getProducts(this.search, this.country);
+    this.getProducts(this.search, this.country, this.category);
   }
 
   updateFilter(event): void {
-    this.getProducts(this.search, this.country);
+    this.getProducts(this.search, this.country, this.category);
   }
 
   searching(): void {
-    this.getProducts(this.search, this.country);
+    this.getProducts(this.search, this.country, this.category);
   }
 
   getCountries(): void {
@@ -87,7 +91,13 @@ export class HomeComponent implements OnInit {
 
   filterByCountry(country: string): void {
     this.country = country;
-    this.getProducts(this.search, this.country);
+    this.getProducts(this.search, this.country, this.category);
+  }
+
+  filterByCategory(category: string): void {
+    this.category = category;
+    console.log(this.category);
+    this.getProducts(this.search, this.country, this.category);
   }
 
 }

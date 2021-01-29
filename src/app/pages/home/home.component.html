@@ -1,8 +1,8 @@
 <div class="product-main" fxLayout="column" >
     <mat-card class="product-container">
         <div fxLayout="row" fxLayoutAlign="space-between center">
-            <button mat-button [matMenuTriggerFor]="menu">Countries</button>
-            <mat-menu #menu="matMenu">
+            <button mat-button [matMenuTriggerFor]="countryMenu">Countries: {{ country }}</button>
+            <mat-menu #countryMenu="matMenu">
                 <button *ngFor="let country of countries" mat-menu-item (click)="filterByCountry(country.descriptionEN)">
                     <span>{{ country.descriptionEN }}</span>
                 </button>
@@ -10,25 +10,30 @@
                     <span>ALL</span>
                 </button>
             </mat-menu>
-            <mat-form-field>
-                <input matInput name="searchControl" type='text' class="form-control" [(placeholder)]='placeHolder' (change)="updateFilterChange($event)" (keyup)='updateFilter($event)'
-                [(ngModel)]="search"/>
-                <mat-icon matTooltip="Search" data-toggle="tooltip" matTooltipPosition="above" (click)='searching()' class="searchButton"
-                  matSuffix>search</mat-icon>
-            </mat-form-field>
+            <div>
+                <button mat-button [matMenuTriggerFor]="categoryMenu">Categories: {{ category }}</button>
+                <mat-menu #categoryMenu="matMenu">
+                    <button *ngFor="let category of categories" mat-menu-item (click)="filterByCategory(category.descriptionEN)">
+                        <span>{{ category.descriptionEN }}</span>
+                    </button>
+                    <button mat-menu-item (click)="filterByCategory('ALL')">
+                        <span>ALL</span>
+                    </button>
+                </mat-menu>
+                <mat-form-field>
+                    <input matInput name="searchControl" type='text' class="form-control" [(placeholder)]='placeHolder' (change)="updateFilterChange($event)" (keyup)='updateFilter($event)'
+                    [(ngModel)]="search"/>
+                    <mat-icon matTooltip="Search" data-toggle="tooltip" matTooltipPosition="above" (click)='searching()' class="searchButton"
+                      matSuffix>search</mat-icon>
+                </mat-form-field>
+            </div>
+            
         </div>
         <mat-card-content fxLayout="row wrap">
             <div *ngFor="let product of products" fxLayoutAlign="center center" fxFlex.gt-lg="33.33" fxFlex.gt-md="33.33" fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100">
                 <app-product-card [product]="product"></app-product-card>
             </div>
         </mat-card-content>
-        <div class="horizontal-scroll">
-            <div *ngFor="let category of categories" class="horizontal-child">
-                <div class="circle">
-                    <h3>{{ category.descriptionEN }}</h3>
-                </div>
-            </div>
-        </div>
     </mat-card>
 </div>
 <br>
