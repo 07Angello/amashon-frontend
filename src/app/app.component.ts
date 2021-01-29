@@ -23,4 +23,9 @@ export class AppComponent {
   goHome(): void {
     this.router.navigate(['/home']);
   }
+
+  menuHome(): void {
+    this.toggleMenu();
+    this.router.navigate(['/home']);
+  }
 }

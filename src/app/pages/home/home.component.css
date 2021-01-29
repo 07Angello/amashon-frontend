@@ -28,3 +28,29 @@
     margin: 15px;
     margin-bottom: 64px;
 }
+
+.horizontal-scroll {
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.horizontal-child {
+    display: inline-block;
+  color: white;
+  text-align: center;
+  padding: 0px 70px 0px 70px;
+  text-decoration: none;
+}
+
+.circle {
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    background: #3f96cd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin:0px auto;
+    padding:3%
+}

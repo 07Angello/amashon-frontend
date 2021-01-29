@@ -29,6 +29,7 @@ export class ProductDetailComponent implements OnInit {
   getProductDetailInformation(): void {
     this.productService.getProduct(this.productId)
       .subscribe((response: any) => {
+        console.log(response.Message);
         if (response.Message && response.Message.length > 0) {
           console.log(response.Message);
         }

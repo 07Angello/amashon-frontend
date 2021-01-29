@@ -1,16 +1,25 @@
 <div class="product-main" fxLayout="column" >
     <mat-card class="product-container">
-        <mat-card-content fxLayout="row wrap">
-            <mat-form-field fxLayoutAlign="end center" style="width: 100%;">
-                <input style="width: 200px;" matInput name="searchControl" type='text' class="form-control" [(placeholder)]='placeHolder' (change)="updateFilterChange($event)" (keyup)='updateFilter($event)'
+        <div fxLayout="row" fxLayoutAlign="end center">
+            <mat-form-field>
+                <input matInput name="searchControl" type='text' class="form-control" [(placeholder)]='placeHolder' (change)="updateFilterChange($event)" (keyup)='updateFilter($event)'
                 [(ngModel)]="search"/>
                 <mat-icon matTooltip="Search" data-toggle="tooltip" matTooltipPosition="above" (click)='searching()' class="searchButton"
                   matSuffix>search</mat-icon>
             </mat-form-field>
+        </div>
+        <mat-card-content fxLayout="row wrap">
             <div *ngFor="let product of products" fxLayoutAlign="center center" fxFlex.gt-lg="33.33" fxFlex.gt-md="33.33" fxFlex.gt-sm="50" fxFlex.gt-xs="100" fxFlex="100">
                 <app-product-card [product]="product"></app-product-card>
             </div>
         </mat-card-content>
+        <div class="horizontal-scroll">
+            <div *ngFor="let category of categories" class="horizontal-child">
+                <div class="circle">
+                    <h3>{{ category.descriptionEN }}</h3>
+                </div>
+            </div>
+        </div>
     </mat-card>
 </div>
 <br>

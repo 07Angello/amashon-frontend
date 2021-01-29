@@ -13,10 +13,10 @@
 <!--======= Sidebar menu =======-->
 <ng-sidebar-container style="width: 100%;">
     <ng-sidebar [opened]="isOpen" style="width: 300px;">
-        <p>Options</p>
-        <button (click)="toggleMenu()">
-            cerrar
-        </button>
+        
+        <h1 href="#" class="mouse-pointer" (click)="menuHome()" fxLayoutAlign="center center">
+            <mat-icon style="padding-right: 10px;" aria-hidden="false" aria-label="Example home icon">home</mat-icon> Home
+        </h1>
     </ng-sidebar>
     <div ng-sidebar-content >
         <!--======= Router oulet =======-->
